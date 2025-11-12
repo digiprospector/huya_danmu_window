@@ -288,10 +288,10 @@ async def danmu_main(room_id):
     global browser
     async with async_playwright() as p:
         try:
-            # 原始脚本使用的是firefox，这里保持一致
-            browser = await p.firefox.launch(headless=True)
+            # 更改为使用 Chromium (Chrome) 浏览器
+            browser = await p.chromium.launch(headless=True)
             context = await browser.new_context(
-                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0',
+                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                 service_workers='block'
             )
             page = await context.new_page()
